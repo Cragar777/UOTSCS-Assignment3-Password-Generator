@@ -1,1 +1,1 @@
-# UOTSCS-Assignment3-Password-Generator
+# Password Generator Starter Code
