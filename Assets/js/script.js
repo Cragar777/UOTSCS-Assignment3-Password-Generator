@@ -1,43 +1,41 @@
 // Assignment code here
-// Prompt for password criteria
-// Window message "Please make the following selections to create your password"
-// Select which criteria to include
+// Prompt for password character length between 8 & 128
+var pwLength = prompt("Please enter a password length between 8 and 128 characters:");
+//if pwLength<8 || pwLength>128
+console.log(pwLength);
+
+// Confirm character types of lowercase, uppercase, numeric and special characters
+
 const alphalc = "abcdefghijklmnopqrstuvwxyz";
 const alphauc = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
 const numbers = "0123456789";
 const symbols = " !#$%&()*+,-./:;<=>?@[\]^_{|}~";
 const charTypes = [alphalc, alphauc, numbers, symbols];
-// Choose password character length between 8 & 128
-var pwlength = Math.floor(Math.random()*120)+8;
-console.log(pwlength);
 
-// Window input "Please select the length of your password between"
-// Confirm character types of lowercase, uppercase, numeric and special characters
 var charString ="";
-var charTypeNames = ["alpha-lowercase", "alpha-uppercase", "numbers", "symbols"];
-// for (var i=0; i < 4; i++) {
-  var i=0;
+var charTypeNames = ["alpha-lowercase (abc)", "alpha-uppercase (ABC)", "numbers (123)", "symbols (@#$)"]; 
+var i=0;
   do {
-  //charTypes(i);
-  var charConfirm = prompt("Do you want to include ", charTypeNames[i], "?"); {
-  console.log(charConfirm);
-    if (charConfirm = true) {
-    charString += charTypes[i];
-    console.log(charString);
+      var charConfirm = confirm("Do you want to include " + charTypeNames[i] + "?");{ 
+      console.log(charConfirm);
+      if (charConfirm === true) {
+      charString += charTypes[i];}
+      console.log(charString);
+      i++;   
     }
-    else {
-      i<4, i++;
+    // Validate input after each prompt and ensure at least one character type is selected
+    if (i==4 && charString=="") {
+      i=0;
+      charConfirm = alert("Please choose at least one character type.");
     }
-    i++;
-  }
 }
   while (i<4);
+  var charStringLength=charString.length;
 
-// Validate input after each prompt and ensure at least one character type is selected
 // After all prompts are answered generate password matching criteria selected
 function generatePassword() {
-  for (i = 0; i < pwlength; i++)
-  password += alphalc.charAt(Math.floor(Math.random()*26))
+  for (i = 0; i < pwLength; i++)
+  password += charString.charAt(Math.floor(Math.random()*charStringLength))
   console.log(password);
 }
 // Display generated password in alert or on the page
