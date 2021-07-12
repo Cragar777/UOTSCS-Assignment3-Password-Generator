@@ -1,7 +1,16 @@
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
 // Assignment code here
 // Prompt for password character length between 8 & 128
 var pwLength = prompt("Please enter a password length between 8 and 128 characters:");
-//if pwLength<8 || pwLength>128
 console.log(pwLength);
 
 // Confirm character types of lowercase, uppercase, numeric and special characters
@@ -37,20 +46,12 @@ function generatePassword() {
   for (i = 0; i < pwLength; i++)
   password += charString.charAt(Math.floor(Math.random()*charStringLength))
   console.log(password);
+  return password;
 }
+
 // Display generated password in alert or on the page
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
